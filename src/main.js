@@ -7,6 +7,8 @@
     DOM.extend("time[is=local-time]", {
         constructor() {
             this.on("change", this._changeValue.bind(this));
+
+            this._changeValue();
         },
         _changeValue() {
             var value = new Date(this.get("datetime")),
