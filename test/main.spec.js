@@ -37,6 +37,23 @@ describe("better-time-element", function() {
         expect(el.get("textContent")).toBe("14 3 10, 288 41 12");
     });
 
+    it("formats time with custom formats", function() {
+        el.set("datetime", "2014-08-03T02:20");
+        el.set("data-format", "MM/dd/yyyy H:mm");
+        el._changeValue();
+        expect(el.get("textContent")).toBe("08/02/2014 2:20");
+
+        el.set("datetime", "2014-08-03T02:02");
+        el.set("data-format", "MM/dd/yyyy HH:m");
+        el._changeValue();
+        expect(el.get("textContent")).toBe("08/02/2014 02:2");
+
+        el.set("datetime", "2014-08-03T23:02");
+        el.set("data-format", "MM/dd/yyyy hh:mm");
+        el._changeValue();
+        expect(el.get("textContent")).toBe("08/03/2014 11:02");
+    });
+
     it("keeps literals on custom formats", function() {
         el.set("datetime", "2014-12-03");
         el.set("data-format", "EE (u), F'th week of' MMMM d'th' yy (DD'th of year')");

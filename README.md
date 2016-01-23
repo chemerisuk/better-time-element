@@ -48,6 +48,10 @@ Possible parameters for the format are:
 |F      |Day of week in month (1st, 2nd, 3rd Tuesday)     |Number       |2                |
 |E      |Day name in week                                 |Text         |Tuesday; Tu.     |
 |u      |Day number of week (1 = Monday, ..., 7 = Sunday) |Number       |1                |
+|H      |Hour in day (0-23) |Number       |1                |
+|h      |Hour in am/pm (1-12) |Number       |1                |
+|m      |Minute in hour |Number       |12                |
+|s      |Second in minute |Number       |1                |
 
 Number of letters in the parameter name specifies form of the output value, for instance:
 

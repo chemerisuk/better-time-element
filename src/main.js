@@ -25,6 +25,10 @@
                 var date = value.getUTCDate();
                 var month = value.getUTCMonth();
                 var year = value.getUTCFullYear();
+                var hour = value.getHours();
+                var hourAMPM = hour % 12 || 12;
+                var minutes = value.getMinutes();
+                var seconds = value.getSeconds();
 
                 formatString = formatString
                         .replace(/'([^']+)'/g, "->$1<-")
@@ -32,6 +36,14 @@
                         .replace(/->{(.*?)}<-/g, (_, group) => group.replace(/}|{/g, ""));
 
                 formattedValue = DOM.format(formatString, {
+                    H: hour,
+                    HH: pad(hour, 2),
+                    h: hourAMPM,
+                    hh: pad(hourAMPM, 2),
+                    m: minutes,
+                    mm: pad(minutes, 2),
+                    s: seconds,
+                    ss: pad(seconds, 2),
                     E: __(DateUtils.DAYS[day].slice(0, 2)).toHTMLString(),
                     EE: __(DateUtils.DAYS[day]).toHTMLString(),
                     d: date,
