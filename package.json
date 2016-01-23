@@ -1,0 +1,25 @@
+{
+  "name": "better-time-element",
+  "description": "Various <time> element extensions",
+  "version": "0.0.1",
+  "author": "Maksim Chemerisuk",
+  "homepage": "https://github.com/chemerisuk/better-time-element",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chemerisuk/better-time-element"
+  },
+  "scripts": {
+    "test": "gulp test --gulpfile node_modules/better-dom-boilerplate/gulpfile.js --cwd .",
+    "start": "gulp dev --gulpfile node_modules/better-dom-boilerplate/gulpfile.js --cwd .",
+    "release": "gulp release --gulpfile node_modules/better-dom-boilerplate/gulpfile.js --cwd .",
+    "gh-pages": "gulp gh-pages --gulpfile node_modules/better-dom-boilerplate/gulpfile.js --cwd ."
+  },
+  "devDependencies": {
+    "better-dom-boilerplate": "git://github.com/chemerisuk/better-dom-boilerplate.git"
+  },
+  "karmaFiles": [
+    "bower_components/better-dom/dist/better-dom.js",
+    "bower_components/better-dom/dist/better-dom-legacy.js"
+  ]
+}

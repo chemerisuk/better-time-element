@@ -1,0 +1,21 @@
+{
+  "name": "better-time-element",
+  "version": "0.0.1",
+  "main": [
+    "dist/better-time-element.js"
+  ],
+  "ignore": [
+    ".*",
+    "test",
+    "src",
+    "index.html",
+    "package.json",
+    "bower.json"
+  ],
+  "keywords": [
+    "better-dom"
+  ],
+  "dependencies": {
+    "better-dom": "~2.1.0"
+  }
+}
