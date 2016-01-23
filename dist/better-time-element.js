@@ -1,6 +1,6 @@
 /**
  * better-time-element: Various <time> element extensions
- * @version 1.0.0-beta.1 Sat, 23 Jan 2016 12:12:35 GMT
+ * @version 1.0.0-beta.2 Sat, 23 Jan 2016 12:33:34 GMT
  * @link https://github.com/chemerisuk/better-time-element
  * @copyright 2016 Maksim Chemerisuk
  * @license MIT
@@ -32,6 +32,10 @@
                 var date = value.getUTCDate();
                 var month = value.getUTCMonth();
                 var year = value.getUTCFullYear();
+                var hour = value.getHours();
+                var hourAMPM = hour % 12 || 12;
+                var minutes = value.getMinutes();
+                var seconds = value.getSeconds();
 
                 formatString = formatString
                         .replace(/'([^']+)'/g, "->$1<-")
@@ -39,6 +43,14 @@
                         .replace(/->{(.*?)}<-/g, function(_, group)  {return group.replace(/}|{/g, "")});
 
                 formattedValue = DOM.format(formatString, {
+                    H: hour,
+                    HH: pad(hour, 2),
+                    h: hourAMPM,
+                    hh: pad(hourAMPM, 2),
+                    m: minutes,
+                    mm: pad(minutes, 2),
+                    s: seconds,
+                    ss: pad(seconds, 2),
                     E: __(DateUtils.DAYS[day].slice(0, 2)).toHTMLString(),
                     EE: __(DateUtils.DAYS[day]).toHTMLString(),
                     d: date,

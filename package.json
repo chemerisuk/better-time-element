@@ -1,7 +1,7 @@
 {
   "name": "better-time-element",
   "description": "Various <time> element extensions",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "author": "Maksim Chemerisuk",
   "homepage": "https://github.com/chemerisuk/better-time-element",
   "license": "MIT",
