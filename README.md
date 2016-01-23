@@ -1,5 +1,5 @@
 # better-time-element<br>[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Bower version][bower-image]][bower-url]
-> Various `<time>` extensions element using [better-dom](https://github.com/chemerisuk/better-dom)
+> Various `<time>` element extensions using [better-dom](https://github.com/chemerisuk/better-dom)
 
 [LIVE DEMO](http://chemerisuk.github.io/better-time-element/)
 

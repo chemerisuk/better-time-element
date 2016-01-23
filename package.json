@@ -20,6 +20,7 @@
   },
   "karmaFiles": [
     "bower_components/better-dom/dist/better-dom.js",
-    "bower_components/better-dom/dist/better-dom-legacy.js"
+    "bower_components/better-dom/dist/better-dom-legacy.js",
+    "bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"
   ]
 }
