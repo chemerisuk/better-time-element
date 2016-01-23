@@ -12,7 +12,9 @@
             var value = new Date(this.get("datetime")),
                 formattedValue = "";
 
-            if (value.getTime()) {
+            if (!value.getTime()) {
+                formattedValue = value.toString();
+            } else {
                 var formatString = this.get("data-format");
                 // use "E, dd MMM yyyy" as default value
                 if (!formatString) formatString = "E, dd MMM yyyy";

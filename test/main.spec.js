@@ -55,4 +55,14 @@ describe("better-time-element", function() {
 
         expect(el.get("textContent")).toBe("Tu, 02 Dec. 2014");
     });
+
+    it("prints invalid dates", function() {
+        var invalidDateString = new Date(NaN).toString();
+
+        el.set("datetime", "bad date");
+
+        el._changeValue();
+
+        expect(el.get("textContent")).toBe(invalidDateString);
+    });
 });
