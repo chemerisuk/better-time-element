@@ -1,10 +1,10 @@
 # better-time-element<br>[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Bower version][bower-image]][bower-url]
-> Various `<time>` element extensions using [better-dom](https://github.com/chemerisuk/better-dom)
+> Useful `<time>` element extensions using [better-dom](https://github.com/chemerisuk/better-dom)
 
 [LIVE DEMO](http://chemerisuk.github.io/better-time-element/)
 
 ## Features
-* represent time in local format via `time[is=local-time]`
+* represents time in local format via `time[is=local-time]`
 * [custom formats](#custom-formats) support via `data-format`
 * [full i18n support](https://github.com/chemerisuk/better-i18n-plugin#multilingual-live-extensions) (if your language is missed - just translate strings from `i18n` folder and include a new file in your project)
 
@@ -21,6 +21,7 @@ Then append the following tags on your page:
 
 ```html
 <script src="bower_components/better-dom/dist/better-dom.js"></script>
+<script src="bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"></script>
 <script src="bower_components/better-time-element/dist/better-time-element.js"></script>
 ```
 
