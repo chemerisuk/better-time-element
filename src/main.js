@@ -2,7 +2,7 @@
     "use strict";
 
     var __ = DOM.__;
-    var pad = (num, maxlen) => ((maxlen === 2 ? "0" : "00") + num).slice(-maxlen);
+    var pad = (num, maxlen) => ("00" + num).slice(-maxlen);
 
     DOM.extend("time[is=local-time]", {
         constructor() {
@@ -65,7 +65,6 @@
                 });
             }
 
-            // display formatted date value instead of real one
             this.value(formattedValue);
         }
     });

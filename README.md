@@ -43,7 +43,7 @@ Possible parameters for the format are:
 |M      |Month in year                                    |Month        |July; Jul; 07; 7 |
 |w      |Week in year                                     |Number       |07; 7            |
 |W      |Week in month                                    |Number       |2                |
-|D      |Day in year                                      |Number       |009; 9           |
+|D      |Day in year                                      |Number       |09; 9           |
 |d      |Day in month                                     |Number       |08; 8            |
 |F      |Day of week in month (1st, 2nd, 3rd Tuesday)     |Number       |2                |
 |E      |Day name in week                                 |Text         |Tuesday; Tu.     |
