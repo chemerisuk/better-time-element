@@ -38,20 +38,24 @@ describe("better-time-element", function() {
     });
 
     it("formats time with custom formats", function() {
-        el.set("datetime", "2014-08-03T02:20");
+        var date = new Date("2014-08-03T02:20Z");
+        var hours = date.getHours();
+        var zeroHours = ("00" + date.getHours()).slice(-2);
+
+        el.set("datetime", date.toISOString());
         el.set("data-format", "MM/dd/yyyy H:mm");
         el._changeValue();
-        expect(el.get("textContent")).toBe("08/02/2014 2:20");
+        expect(el.get("textContent")).toBe("08/03/2014 " + hours + ":20");
 
-        el.set("datetime", "2014-08-03T02:02");
+        el.set("datetime", date.toISOString());
         el.set("data-format", "MM/dd/yyyy HH:m");
         el._changeValue();
-        expect(el.get("textContent")).toBe("08/02/2014 02:2");
+        expect(el.get("textContent")).toBe("08/03/2014 " + zeroHours + ":20");
 
-        el.set("datetime", "2014-08-03T23:02");
-        el.set("data-format", "MM/dd/yyyy hh:mm");
+        el.set("datetime", date.toISOString());
+        el.set("data-format", "MM/dd/yyyy h:mm");
         el._changeValue();
-        expect(el.get("textContent")).toBe("08/03/2014 11:02");
+        expect(el.get("textContent")).toBe("08/03/2014 " + (hours % 12 || 12) + ":20");
     });
 
     it("keeps literals on custom formats", function() {
