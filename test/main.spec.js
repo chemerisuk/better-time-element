@@ -8,11 +8,14 @@ describe("better-time-element", function() {
     });
 
     it("formats date with default format", function() {
-        el.set("datetime", "2014-11-02");
+        var date = new Date("2014-08-03T02:20Z");
+        var hours = date.getHours();
+
+        el.set("datetime", "2014-08-03T02:05:04Z");
 
         el._changeValue();
 
-        expect(el.get("textContent")).toBe("Su, 02 Nov. 2014");
+        expect(el.get("textContent")).toBe("Su, 03 Aug. 2014 " + hours + ":05:04");
     });
 
     it("formats date with custom formats", function() {
@@ -68,13 +71,15 @@ describe("better-time-element", function() {
     });
 
     it("listens to change event", function() {
-        expect(el.get("textContent")).not.toBe("Su, 02 Dec. 2014");
+        var date = new Date("2014-08-02T02:20Z");
+        var hours = date.getHours();
 
-        el.set("datetime", "2014-12-02");
+        el.set("datetime", "2014-12-02T02:05:04Z");
+        expect(el.get("textContent")).toBe("");
 
         el.fire("change");
 
-        expect(el.get("textContent")).toBe("Tu, 02 Dec. 2014");
+        expect(el.get("textContent")).toBe("Tu, 02 Dec. 2014 " + hours + ":05:04");
     });
 
     it("prints invalid dates", function() {

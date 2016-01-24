@@ -11,7 +11,11 @@
             this._changeValue();
         },
         _changeValue() {
-            var value = new Date(this.get("datetime")),
+            var datetimeText = this.get("datetime");
+
+            if (!datetimeText) return;
+
+            var value = new Date(datetimeText),
                 formattedValue = "";
 
             if (!value.getTime()) {
@@ -19,7 +23,7 @@
             } else {
                 var formatString = this.get("data-format");
                 // use "E, dd MMM yyyy" as default value
-                if (!formatString) formatString = "E, dd MMM yyyy";
+                if (!formatString) formatString = "E, dd MMM yyyy H:mm:ss";
 
                 var day = value.getUTCDay();
                 var date = value.getUTCDate();
