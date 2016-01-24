@@ -49,10 +49,10 @@ Possible parameters for the format are:
 |F      |Day of week in month (1st, 2nd, 3rd Tuesday)     |Number       |2                |
 |E      |Day name in week                                 |Text         |Tuesday; Tu.     |
 |u      |Day number of week (1 = Monday, ..., 7 = Sunday) |Number       |1                |
-|H      |Hour in day (0-23) |Number       |1                |
-|h      |Hour in am/pm (1-12) |Number       |1                |
-|m      |Minute in hour |Number       |12                |
-|s      |Second in minute |Number       |1                |
+|H      |Hour in day (0-23) |Number       |01;1                |
+|h      |Hour in am/pm (1-12) |Number       |01;1                |
+|m      |Minute in hour |Number       |01;1                |
+|s      |Second in minute |Number       |01;1                |
 
 Number of letters in the parameter name specifies form of the output value, for instance:
 
@@ -64,17 +64,9 @@ Number of letters in the parameter name specifies form of the output value, for 
 ```
 
 ## Browser support
-#### Desktop
-* Chrome
-* Safari 6.0+
-* Firefox 16+
-* Opera 12.10+
-* Internet Explorer 8+ (see [notes](https://github.com/chemerisuk/better-dom#notes-about-old-ies))
-
-#### Mobile
-* iOS Safari 6+
-* Android 2.3+
-* Chrome for Android
+![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png) | ![Android](https://raw.github.com/alrra/browser-logos/master/android/android_48x48.png) 
+--- | --- | --- | --- | --- | --- |
+Latest ✔ | Latest ✔ | 8+ ✔ (see [notes](https://github.com/chemerisuk/better-dom#notes-about-old-ies)) | 12.10+ ✔ | 6.0+ ✔ | 2.3+ ✔ |
 
 [travis-url]: http://travis-ci.org/chemerisuk/better-time-element
 [travis-image]: http://img.shields.io/travis/chemerisuk/better-time-element/master.svg
