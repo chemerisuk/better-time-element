@@ -72,6 +72,15 @@
             this.value(formattedValue);
         }
     });
+
+    // compact months in english don't have the dot suffix
+    DOM.importStrings("en", DateUtils.MONTHS.reduce((memo, month) => {
+        var shortMonth = month.slice(0, 3);
+
+        memo[shortMonth + "."] = shortMonth;
+
+        return memo;
+    }, {}));
 }(window.DOM, {
     DAYS: "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),
     MONTHS: "January February March April May June July August September October November December".split(" "),
