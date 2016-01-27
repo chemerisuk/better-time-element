@@ -2,7 +2,7 @@
     "use strict";
 
     var __ = DOM.__;
-    var pad = (num, maxlen) => ("00" + num).slice(-maxlen);
+    var pad = (num, maxlen) => maxlen === 1 ? num : ("00" + num).slice(-maxlen);
 
     DOM.extend("time[is=local-time]", {
         constructor() {
@@ -27,32 +27,82 @@
 
                 formattedValue = formatString.replace(/\w+/g, (str) => {
                     switch (str) {
-                        case "H": str = value.getHours(); break;
-                        case "HH": str = pad(value.getHours(), 2); break;
-                        case "h": str = value.getHours() % 12 || 12; break;
-                        case "hh": str = pad(value.getHours() % 12 || 12, 2); break;
-                        case "m": str = value.getMinutes(); break;
-                        case "mm": str = pad(value.getMinutes(), 2); break;
-                        case "s": str = value.getSeconds(); break;
-                        case "ss": str = pad(value.getSeconds(), 2); break;
-                        case "E": str = __(DateUtils.DAYS[value.getUTCDay()].slice(0, 2)); break;
-                        case "EE": str = __(DateUtils.DAYS[value.getUTCDay()]); break;
-                        case "d": str = value.getDate(); break;
-                        case "dd": str = pad(value.getDate(), 2); break;
-                        case "D": str = DateUtils.getDayInYear(value); break;
-                        case "DD": str = pad(DateUtils.getDayInYear(value), 3); break;
-                        case "w": str = DateUtils.getWeekInYear(value); break;
-                        case "ww": str = pad(DateUtils.getWeekInYear(value), 2); break;
-                        case "W": str = DateUtils.getWeekInMonth(value); break;
-                        case "M": str = value.getMonth() + 1; break;
-                        case "MM": str = pad(value.getMonth() + 1, 2); break;
-                        case "MMM": str = __(DateUtils.MONTHS[value.getMonth()].substr(0, 3) + "."); break;
-                        case "MMMM": str = __(DateUtils.MONTHS[value.getMonth()]); break;
-                        case "y": str = value.getFullYear() % 100; break;
-                        case "yy": str = pad(value.getFullYear() % 100, 2); break;
-                        case "yyyy": str = value.getFullYear(); break;
-                        case "u": str = value.getDay() || 7; break;
-                        case "F": str = DateUtils.getWeekCountInMonth(value); break;
+                        case "H":
+                        case "HH":
+                            str = pad(value.getHours(), str.length);
+                            break;
+
+                        case "h":
+                        case "hh":
+                            str = pad(value.getHours() % 12 || 12, str.length);
+                            break;
+
+                        case "m":
+                        case "mm":
+                            str = pad(value.getMinutes(), str.length);
+                            break;
+
+                        case "s":
+                        case "ss":
+                            str = pad(value.getSeconds(), str.length);
+                            break;
+
+                        case "d":
+                        case "dd":
+                            str = pad(value.getDate(), str.length);
+                            break;
+
+                        case "E":
+                            str = __(DateUtils.DAYS[value.getDay()].slice(0, 2));
+                            break;
+
+                        case "EE":
+                            str = __(DateUtils.DAYS[value.getDay()]);
+                            break;
+
+                        case "D":
+                        case "DD":
+                            str = pad(DateUtils.getDayInYear(value), str.length === 1 ? 1 : 3);
+                            break;
+
+                        case "w":
+                        case "ww":
+                            str = pad(DateUtils.getWeekInYear(value), str.length);
+                            break;
+
+                        case "W":
+                            str = DateUtils.getWeekInMonth(value);
+                            break;
+
+                        case "M":
+                        case "MM":
+                            str = pad(value.getMonth() + 1, str.length);
+                            break;
+
+                        case "MMM":
+                            str = __(DateUtils.MONTHS[value.getMonth()].substr(0, 3) + ".");
+                            break;
+
+                        case "MMMM":
+                            str = __(DateUtils.MONTHS[value.getMonth()]);
+                            break;
+
+                        case "y":
+                        case "yy":
+                            str = pad(value.getFullYear() % 100, str.length);
+                            break;
+
+                        case "yyyy":
+                            str = value.getFullYear();
+                            break;
+
+                        case "u":
+                            str = value.getDay() || 7;
+                            break;
+
+                        case "F":
+                            str = DateUtils.getWeekCountInMonth(value);
+                            break;
                     }
 
                     return str.toString();
