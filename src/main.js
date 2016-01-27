@@ -22,50 +22,40 @@
                 formattedValue = value.toString();
             } else {
                 var formatString = this.get("data-format");
-                // use "E, dd MMM yyyy" as default value
+                // use "E, dd MMM yyyy H:mm:ss" as default value
                 if (!formatString) formatString = "E, dd MMM yyyy H:mm:ss";
 
-                var day = value.getUTCDay();
-                var date = value.getUTCDate();
-                var month = value.getUTCMonth();
-                var year = value.getUTCFullYear();
-                var hour = value.getHours();
-                var hourAMPM = hour % 12 || 12;
-                var minutes = value.getMinutes();
-                var seconds = value.getSeconds();
+                formattedValue = formatString.replace(/\w+/g, (str) => {
+                    switch (str) {
+                        case "H": str = value.getHours(); break;
+                        case "HH": str = pad(value.getHours(), 2); break;
+                        case "h": str = value.getHours() % 12 || 12; break;
+                        case "hh": str = pad(value.getHours() % 12 || 12, 2); break;
+                        case "m": str = value.getMinutes(); break;
+                        case "mm": str = pad(value.getMinutes(), 2); break;
+                        case "s": str = value.getSeconds(); break;
+                        case "ss": str = pad(value.getSeconds(), 2); break;
+                        case "E": str = __(DateUtils.DAYS[value.getUTCDay()].slice(0, 2)); break;
+                        case "EE": str = __(DateUtils.DAYS[value.getUTCDay()]); break;
+                        case "d": str = value.getDate(); break;
+                        case "dd": str = pad(value.getDate(), 2); break;
+                        case "D": str = DateUtils.getDayInYear(value); break;
+                        case "DD": str = pad(DateUtils.getDayInYear(value), 3); break;
+                        case "w": str = DateUtils.getWeekInYear(value); break;
+                        case "ww": str = pad(DateUtils.getWeekInYear(value), 2); break;
+                        case "W": str = DateUtils.getWeekInMonth(value); break;
+                        case "M": str = value.getMonth() + 1; break;
+                        case "MM": str = pad(value.getMonth() + 1, 2); break;
+                        case "MMM": str = __(DateUtils.MONTHS[value.getMonth()].substr(0, 3) + "."); break;
+                        case "MMMM": str = __(DateUtils.MONTHS[value.getMonth()]); break;
+                        case "y": str = value.getFullYear() % 100; break;
+                        case "yy": str = pad(value.getFullYear() % 100, 2); break;
+                        case "yyyy": str = value.getFullYear(); break;
+                        case "u": str = value.getDay() || 7; break;
+                        case "F": str = DateUtils.getWeekCountInMonth(value); break;
+                    }
 
-                formatString = formatString
-                        .replace(/'([^']+)'/g, "->$1<-")
-                        .replace(/\w+/g, "{$&}")
-                        .replace(/->{(.*?)}<-/g, (_, group) => group.replace(/}|{/g, ""));
-
-                formattedValue = DOM.format(formatString, {
-                    H: hour,
-                    HH: pad(hour, 2),
-                    h: hourAMPM,
-                    hh: pad(hourAMPM, 2),
-                    m: minutes,
-                    mm: pad(minutes, 2),
-                    s: seconds,
-                    ss: pad(seconds, 2),
-                    E: __(DateUtils.DAYS[day].slice(0, 2)).toHTMLString(),
-                    EE: __(DateUtils.DAYS[day]).toHTMLString(),
-                    d: date,
-                    dd: pad(date, 2),
-                    D: DateUtils.getDayInYear(value),
-                    DD: pad(DateUtils.getDayInYear(value), 3),
-                    w: DateUtils.getWeekInYear(value),
-                    ww: pad(DateUtils.getWeekInYear(value), 2),
-                    W: DateUtils.getWeekInMonth(value),
-                    M: month + 1,
-                    MM: pad(month + 1, 2),
-                    MMM: __(DateUtils.MONTHS[month].substr(0, 3) + ".").toHTMLString(),
-                    MMMM: __(DateUtils.MONTHS[month]).toHTMLString(),
-                    y: year % 100,
-                    yy: pad(year % 100, 2),
-                    yyyy: year,
-                    u: day || 7,
-                    F: DateUtils.getWeekCountInMonth(value)
+                    return str.toString();
                 });
             }
 
