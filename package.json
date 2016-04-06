@@ -11,7 +11,7 @@
   },
   "keywords": [
     "ecosystem:better-dom",
-    "better-dom-plugin"
+    "better-time-element"
   ],
   "bugs": {
     "url": "https://github.com/chemerisuk/better-emmet-plugin/issues"
@@ -29,8 +29,15 @@
     "better-dom-boilerplate": "git://github.com/chemerisuk/better-dom-boilerplate.git"
   },
   "karmaFiles": [
-    "bower_components/better-dom/dist/better-dom.js",
-    "bower_components/better-dom/dist/better-dom-legacy.js",
-    "bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"
-  ]
+    "node_modules/better-dom/dist/better-dom.js",
+    "node_modules/better-i18n-plugin/dist/better-i18n-plugin.js"
+  ],
+  "dependencies": {
+    "better-dom": "^3.0.0-beta.3",
+    "better-i18n-plugin": "^2.0.0-beta.2"
+  },
+  "peerDependencies": {
+    "better-dom": "^3.0.0-beta.3",
+    "better-i18n-plugin": "^2.0.0-beta.2"
+  }
 }

@@ -1,4 +1,4 @@
-# better-time-element<br>[![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Bower version][bower-image]][bower-url]
+# better-time-element<br>[![NPM version][npm-version]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Bower version][bower-image]][bower-url]
 > Useful `<time>` element extensions using [better-dom](https://github.com/chemerisuk/better-dom)
 
 [LIVE DEMO](http://chemerisuk.github.io/better-time-element/)
@@ -67,6 +67,10 @@ Number of letters in the parameter name specifies form of the output value, for 
 ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png) | ![Android](https://raw.github.com/alrra/browser-logos/master/android/android_48x48.png) 
 --- | --- | --- | --- | --- | --- |
 Latest ✔ | Latest ✔ | 8+ ✔ (see [notes](https://github.com/chemerisuk/better-dom#notes-about-old-ies)) | 12.10+ ✔ | 6.0+ ✔ | 2.3+ ✔ |
+
+[npm-url]: https://www.npmjs.com/package/better-time-element
+[npm-version]: https://img.shields.io/npm/v/better-time-element.svg
+[npm-downloads]: https://img.shields.io/npm/dt/better-time-element.svg
 
 [travis-url]: http://travis-ci.org/chemerisuk/better-time-element
 [travis-image]: http://img.shields.io/travis/chemerisuk/better-time-element/master.svg
