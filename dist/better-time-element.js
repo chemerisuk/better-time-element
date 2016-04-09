@@ -1,6 +1,6 @@
 /**
  * better-time-element: Useful <time> element extensions
- * @version 1.0.0-rc.1 Sat, 09 Apr 2016 08:27:14 GMT
+ * @version 1.0.0-rc.2 Sat, 09 Apr 2016 08:57:51 GMT
  * @link https://github.com/chemerisuk/better-time-element
  * @copyright 2016 Maksim Chemerisuk
  * @license MIT
@@ -19,6 +19,7 @@
     DOM.extend("time[is=local-time]", {
         constructor: function () {
             this.watch("datetime", this._changeValue);
+            this.watch("data-format", this._changeValue);
 
             this._changeValue();
         },
