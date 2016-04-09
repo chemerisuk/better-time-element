@@ -25,7 +25,7 @@
                 // use "E, dd MMM yyyy H:mm:ss" as default value
                 if (!formatString) formatString = "E, dd MMM yyyy H:mm:ss";
 
-                formattedValue = formatString.replace(/\w+/g, (str) => {
+                formattedValue = formatString.replace(/('|")(?:\\?.)*?\1|\w+/g, (str, quotes) => {
                     switch (str) {
                         case "H":
                         case "HH":
@@ -99,6 +99,11 @@
                         case "u":
                             str = value.getDay() || 7;
                             break;
+
+                        default:
+                            if (quotes) {
+                                str = str.slice(1, -1);
+                            }
                     }
 
                     return str.toString();

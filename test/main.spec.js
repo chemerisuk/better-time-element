@@ -73,14 +73,16 @@ describe("better-time-element", function() {
         expect(el.get("innerText")).toBe("5:20 pm PM");
     });
 
-    // it("keeps literals on custom formats", function() {
-    //     el.set("datetime", "2014-12-03");
-    //     el.set("data-format", "EE (u), F'th week of' MMMM d'th' yy (DD'th of year')");
+    it("keeps literals on custom formats", function() {
+        el.set("datetime", "2014-12-03");
+        el.set("data-format", "EE (u), MMMM d'th' yyyy 'etc.'");
+        el._changeValue();
+        expect(el.get("innerText")).toBe("Wednesday (3), December 3th 2014 etc.");
 
-    //     el._changeValue();
-
-    //     expect(el.get("innerText")).toBe("Wednesday (3), 1th week of December 3th 14 (337th of year)");
-    // });
+        el.set("data-format", "EE (u), MMMM d\"th\" yyyy \"etc.\"");
+        el._changeValue();
+        expect(el.get("innerText")).toBe("Wednesday (3), December 3th 2014 etc.");
+    });
 
     it("listens to change event", function() {
         var date = new Date("2014-08-02T02:20Z");
