@@ -25,19 +25,19 @@ describe("better-time-element", function() {
         expect(el.get("innerText")).toBe("08/03/2014");
 
         el.set("datetime", "2008-02-03");
-        el.set("data-format", "w: d/M/y");
+        el.set("data-format", "d/M/y");
         el._changeValue();
-        expect(el.get("innerText")).toBe("5: 3/2/8");
+        expect(el.get("innerText")).toBe("3/2/8");
 
         el.set("datetime", "2007-02-08");
-        el.set("data-format", "dd W MM, DD ww yy");
+        el.set("data-format", "dd MM, DD yy");
         el._changeValue();
-        expect(el.get("innerText")).toBe("08 2 02, 039 06 07");
+        expect(el.get("innerText")).toBe("08 02, 039 07");
 
         el.set("datetime", "2012-10-14");
-        el.set("data-format", "d W M, D w y");
+        el.set("data-format", "d M, D y");
         el._changeValue();
-        expect(el.get("innerText")).toBe("14 3 10, 288 41 12");
+        expect(el.get("innerText")).toBe("14 10, 288 12");
     });
 
     it("formats time with custom formats", function() {

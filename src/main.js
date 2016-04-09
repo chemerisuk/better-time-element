@@ -65,15 +65,6 @@
                             str = pad(DateUtils.getDayInYear(value), str.length === 1 ? 1 : 3);
                             break;
 
-                        case "w":
-                        case "ww":
-                            str = pad(DateUtils.getWeekInYear(value), str.length);
-                            break;
-
-                        case "W":
-                            str = DateUtils.getWeekInMonth(value);
-                            break;
-
                         case "M":
                         case "MM":
                             str = pad(value.getMonth() + 1, str.length);
@@ -99,10 +90,6 @@
                         case "u":
                             str = value.getDay() || 7;
                             break;
-
-                        case "F":
-                            str = DateUtils.getWeekCountInMonth(value);
-                            break;
                     }
 
                     return str.toString();
@@ -124,23 +111,6 @@
 }(window.DOM, {
     DAYS: "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),
     MONTHS: "January February March April May June July August September October November December".split(" "),
-    getWeekInYear(d) {
-        d = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
-        // set to nearest thursday: current date + 4 - current day number
-        // make sunday's day number 7
-        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
-        var yearStart = Date.UTC(d.getUTCFullYear(), 0, 1);
-        // calculate full weeks to nearest thursday
-        return Math.ceil((1 + (d - yearStart) / 86400000) / 7);
-    },
-    getWeekInMonth(d) {
-        var firstWeekday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1)).getUTCDay();
-        var offsetDate = d.getUTCDate() + firstWeekday - 1;
-        return 1 + Math.floor(offsetDate / 7);
-    },
-    getWeekCountInMonth(d) {
-        return Math.ceil(d.getUTCDate() / 7);
-    },
     getDayInYear(d) {
         var beginOfYear = Date.UTC(d.getUTCFullYear(), 0, 1);
         var millisBetween = d.getTime() - beginOfYear;

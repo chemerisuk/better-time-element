@@ -42,11 +42,8 @@ Possible parameters for the format are:
 |-------|-------------------------------------------------|-------------|-----------------|
 |y      |Year                                             |Year         |2002; 02; 2      |
 |M      |Month in year                                    |Month        |July; Jul; 07; 7 |
-|w      |Week in year                                     |Number       |07; 7            |
-|W      |Week in month                                    |Number       |2                |
 |D      |Day in year                                      |Number       |09; 9           |
 |d      |Day in month                                     |Number       |08; 8            |
-|F      |Day of week in month (1st, 2nd, 3rd Tuesday)     |Number       |2                |
 |E      |Day name in week                                 |Text         |Tuesday; Tu.     |
 |u      |Day number of week (1 = Monday, ..., 7 = Sunday) |Number       |1                |
 |H      |Hour in day (0-23) |Number       |01;1                |
