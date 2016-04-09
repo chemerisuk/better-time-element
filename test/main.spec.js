@@ -84,15 +84,11 @@ describe("better-time-element", function() {
         expect(el.get("innerText")).toBe("Wednesday (3), December 3th 2014 etc.");
     });
 
-    it("listens to change event", function() {
+    it("watches for changes", function() {
         var date = new Date("2014-08-02T02:20Z");
         var hours = date.getHours();
 
         el.set("datetime", "2014-12-02T02:05:04Z");
-        expect(el.get("innerText")).toBe("");
-
-        el.fire("change");
-
         expect(el.get("innerText")).toBe("Tu, 02 DecDec. 2014 " + hours + ":05:04");
     });
 

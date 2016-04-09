@@ -9,7 +9,7 @@
 
     DOM.extend("time[is=local-time]", {
         constructor() {
-            this.on("change", this._changeValue.bind(this));
+            this.watch("datetime", this._changeValue);
 
             this._changeValue();
         },
