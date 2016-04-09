@@ -90,6 +90,9 @@ describe("better-time-element", function() {
 
         el.set("datetime", "2014-12-02T02:05:04Z");
         expect(el.get("innerText")).toBe("Tu, 02 DecDec. 2014 " + hours + ":05:04");
+
+        el.set("data-format", "MM/dd/yyyy");
+        expect(el.get("innerText")).toBe("12/02/2014");
     });
 
     it("prints invalid dates", function() {

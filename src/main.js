@@ -10,6 +10,7 @@
     DOM.extend("time[is=local-time]", {
         constructor() {
             this.watch("datetime", this._changeValue);
+            this.watch("data-format", this._changeValue);
 
             this._changeValue();
         },
