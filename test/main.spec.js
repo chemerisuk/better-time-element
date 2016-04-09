@@ -59,6 +59,18 @@ describe("better-time-element", function() {
         el.set("data-format", "MM/dd/yyyy h:mm");
         el._changeValue();
         expect(el.get("innerText")).toBe("08/03/2014 " + (hours % 12 || 12) + ":20");
+
+        date.setHours(10);
+        el.set("datetime", date.toISOString());
+        el.set("data-format", "h:mm p P");
+        el._changeValue();
+        expect(el.get("innerText")).toBe("10:20 am AM");
+
+        date.setHours(17);
+        el.set("datetime", date.toISOString());
+        el.set("data-format", "h:mm p P");
+        el._changeValue();
+        expect(el.get("innerText")).toBe("5:20 pm PM");
     });
 
     // it("keeps literals on custom formats", function() {

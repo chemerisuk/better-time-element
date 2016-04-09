@@ -47,6 +47,15 @@
                             str = pad(value.getSeconds(), str.length);
                             break;
 
+                        case "p":
+                        case "P":
+                            if (value.getHours() > 11) {
+                                str = str === "p" ? "pm" : "PM";
+                            } else {
+                                str = str === "p" ? "am" : "AM";
+                            }
+                            break;
+
                         case "d":
                         case "dd":
                             str = pad(value.getDate(), str.length);

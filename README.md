@@ -50,6 +50,8 @@ Possible parameters for the format are:
 |h      |Hour in am/pm (1-12) |Number       |01;1                |
 |m      |Minute in hour |Number       |01;1                |
 |s      |Second in minute |Number       |01;1                |
+|p      |Hour period in lower case |Text       |am/pm                |
+|P      |Hour period in upper case |Text       |AM/PM                |
 
 Number of letters in the parameter name specifies form of the output value, for instance:
 
