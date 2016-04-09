@@ -1,8 +1,11 @@
-(function(DOM, DateUtils) {
+(function(DOM) {
     "use strict";
 
     var __ = DOM.__;
+    var reFormat = /('|")(?:\\?.)*?\1|\w+/g;
     var pad = (num, maxlen) => maxlen === 1 ? num : ("00" + num).slice(-maxlen);
+    var DAYS = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" ");
+    var MONTHS = "January February March April May June July August September October November December".split(" ");
 
     DOM.extend("time[is=local-time]", {
         constructor() {
@@ -25,7 +28,7 @@
                 // use "E, dd MMM yyyy H:mm:ss" as default value
                 if (!formatString) formatString = "E, dd MMM yyyy H:mm:ss";
 
-                formattedValue = formatString.replace(/('|")(?:\\?.)*?\1|\w+/g, (str, quotes) => {
+                formattedValue = formatString.replace(reFormat, (str, quotes) => {
                     switch (str) {
                         case "H":
                         case "HH":
@@ -62,16 +65,18 @@
                             break;
 
                         case "E":
-                            str = __(DateUtils.DAYS[value.getDay()].slice(0, 2));
+                            str = __(DAYS[value.getDay()].slice(0, 2));
                             break;
 
                         case "EE":
-                            str = __(DateUtils.DAYS[value.getDay()]);
+                            str = __(DAYS[value.getDay()]);
                             break;
 
                         case "D":
                         case "DD":
-                            str = pad(DateUtils.getDayInYear(value), str.length === 1 ? 1 : 3);
+                            var beginOfYear = Date.UTC(value.getUTCFullYear(), 0, 1);
+                            var millisBetween = value.getTime() - beginOfYear - value.getTimezoneOffset() * 60 * 1000;
+                            str = pad(Math.floor(1 + millisBetween / 86400000), str.length === 1 ? 1 : 3);
                             break;
 
                         case "M":
@@ -80,11 +85,11 @@
                             break;
 
                         case "MMM":
-                            str = __(DateUtils.MONTHS[value.getMonth()].substr(0, 3) + ".");
+                            str = __(MONTHS[value.getMonth()].substr(0, 3) + ".");
                             break;
 
                         case "MMMM":
-                            str = __(DateUtils.MONTHS[value.getMonth()]);
+                            str = __(MONTHS[value.getMonth()]);
                             break;
 
                         case "y":
@@ -115,19 +120,11 @@
     });
 
     // compact months in english don't have the dot suffix
-    DOM.importStrings("en", DateUtils.MONTHS.reduce((memo, month) => {
+    DOM.importStrings("en", MONTHS.reduce((memo, month) => {
         var shortMonth = month.slice(0, 3);
 
         memo[shortMonth + "."] = shortMonth;
 
         return memo;
     }, {}));
-}(window.DOM, {
-    DAYS: "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),
-    MONTHS: "January February March April May June July August September October November December".split(" "),
-    getDayInYear(d) {
-        var beginOfYear = Date.UTC(d.getUTCFullYear(), 0, 1);
-        var millisBetween = d.getTime() - beginOfYear;
-        return Math.floor(1 + millisBetween / 86400000);
-    }
-}));
+}(window.DOM));
