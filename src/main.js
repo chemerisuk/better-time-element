@@ -23,7 +23,9 @@
                 formattedValue = "";
 
             if (!value.getTime()) {
-                formattedValue = value.toString();
+                // IE can return weird strings for invalid
+                // dates, so return hardcoded constant
+                formattedValue = "Invalid Date";
             } else {
                 var formatString = this.get("data-format");
                 // use "E, dd MMM yyyy H:mm:ss" as default value
