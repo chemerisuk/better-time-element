@@ -23,8 +23,7 @@
                 formattedValue = "";
 
             if (!value.getTime()) {
-                // IE can return weird strings for invalid
-                // dates, so return hardcoded constant
+                // IE returns weird strings for invalid dates, so use a hardcoded value
                 formattedValue = "Invalid Date";
             } else {
                 var formatString = this.get("data-format");
@@ -118,7 +117,7 @@
                 });
             }
 
-            this.value(formattedValue);
+            this.set("innerHTML", formattedValue);
         }
     });
 
