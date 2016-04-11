@@ -1,6 +1,6 @@
 /**
  * better-time-element: Useful <time> element extensions
- * @version 1.0.0-rc.2 Sat, 09 Apr 2016 08:57:51 GMT
+ * @version 1.0.0-rc.3 Mon, 11 Apr 2016 10:28:20 GMT
  * @link https://github.com/chemerisuk/better-time-element
  * @copyright 2016 Maksim Chemerisuk
  * @license MIT
@@ -32,7 +32,8 @@
                 formattedValue = "";
 
             if (!value.getTime()) {
-                formattedValue = value.toString();
+                // IE returns weird strings for invalid dates, so use a hardcoded value
+                formattedValue = "Invalid Date";
             } else {
                 var formatString = this.get("data-format");
                 // use "E, dd MMM yyyy H:mm:ss" as default value
@@ -125,7 +126,7 @@
                 });
             }
 
-            this.value(formattedValue);
+            this.set("innerHTML", formattedValue);
         }
     });
 
