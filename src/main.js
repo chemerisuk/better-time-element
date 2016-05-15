@@ -24,7 +24,7 @@
             var value = new Date(datetimeText),
                 formattedValue = "";
 
-            if (!value.getTime()) {
+            if (isNaN(value)) {
                 // IE returns weird strings for invalid dates, so use a hardcoded value
                 formattedValue = "Invalid Date";
             } else {

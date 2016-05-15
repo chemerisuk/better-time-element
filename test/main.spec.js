@@ -38,6 +38,11 @@ describe("better-time-element", function() {
         el.set("data-format", "d M, D y");
         el._changeValue();
         expect(el.get("innerText")).toBe("14 10, 288 12");
+
+        el.set("datetime", "1970-01-01");
+        el.set("data-format", "yyyy-MM-dd");
+        el._changeValue();
+        expect(el.get("innerText")).toBe("1970-01-01");
     });
 
     it("formats time with custom formats", function() {
