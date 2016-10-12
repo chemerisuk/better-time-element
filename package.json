@@ -34,7 +34,7 @@
     "bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"
   ],
   "peerDependencies": {
-    "better-dom": "^3.0.0-rc.1",
+    "better-dom": ">=2.0.0",
     "better-i18n-plugin": "^2.0.0-rc.1"
   }
 }
