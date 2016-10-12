@@ -1,6 +1,6 @@
 /**
  * better-time-element: Useful <time> element extensions
- * @version 1.0.0-rc.5 Sun, 15 May 2016 11:52:22 GMT
+ * @version 1.0.0 Wed, 12 Oct 2016 12:13:36 GMT
  * @link https://github.com/chemerisuk/better-time-element
  * @copyright 2016 Maksim Chemerisuk
  * @license MIT
