@@ -4,19 +4,19 @@
 [LIVE DEMO](http://chemerisuk.github.io/better-time-element/)
 
 ## Features
-* represents time in local format via `time[is=local-time]`
+* represents time in localized format via `time[is=local-time]`
 * [live extension](https://github.com/chemerisuk/better-dom/wiki/Live-extensions) - works for current and future content
-* [custom formats](#custom-formats) support via `data-format`
-* [full i18n support](https://github.com/chemerisuk/better-i18n-plugin#multilingual-live-extensions) (if your language is missed - just translate strings from `i18n` folder and include a new file in your project)
+* [custom formats](#custom-formats) supported via `data-format`
+* [full i18n support](https://github.com/chemerisuk/better-i18n-plugin#multilingual-live-extensions) (if your language is missing - just translate strings in the `i18n/` folder and include the new file in your project)
 
 ## Installing
-Use [bower](http://bower.io/) to download this extension with all required dependencies.
+Use [bower](http://bower.io/) to download this extension. Bower will take care of the required dependencies.
 
 ```sh
 $ bower install better-time-element
 ```
 
-This will clone the latest version of the __better-time-element__ into the `bower_components` directory at the root of your project.
+This will clone the latest version of the __better-time-element__ into the `bower_components/` directory at the root of your project.
 
 Then append the following tags on your page:
 
@@ -27,15 +27,15 @@ Then append the following tags on your page:
 ```
 
 ## Custom formats
-Displayed date can be formatted using a `data-format` attribute on the element. For example:
+The way the date is displayed can be formatted using a `data-format` attribute on the element. For example:
 
 ```html
 <time datetime="2016-01-23T11:12:58.089Z" is="local-time" data-format="EE, MMMM dd'th' yyyy"></time>
 ```
 
-This will display the selected date like "Monday, December 8th 2014" on the input.
+This will display the selected date as e.g. "Monday, December 8th 2014".
 
-If `data-format` is not specified, date is formatted using the pattern "E, dd MMM yyyy".
+If `data-format` is not specified, the default pattern is "E, dd MMM yyyy".
 
 Possible parameters for the format are:
 
