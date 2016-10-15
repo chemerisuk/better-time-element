@@ -27,7 +27,7 @@ Then append the following tags on your page:
 ```
 
 ## Custom formats
-The way the date is displayed can be formatted using a `data-format` attribute on the element. For example:
+The date format can be specified using a `data-format` attribute on the element. For example:
 
 ```html
 <time datetime="2016-01-23T11:12:58.089Z" is="local-time" data-format="EE, MMMM dd'th' yyyy"></time>
