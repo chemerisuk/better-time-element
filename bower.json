@@ -1,6 +1,7 @@
 {
   "name": "better-time-element",
   "version": "1.0.0",
+  "license": "MIT",
   "main": [
     "dist/better-time-element.js"
   ],
