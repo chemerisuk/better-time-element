@@ -17,7 +17,6 @@
     "better-dom"
   ],
   "dependencies": {
-    "better-dom": "^3.0.0",
-    "better-i18n-plugin": "^2.0.0"
+    "better-dom": "^4.0.0"
   }
 }

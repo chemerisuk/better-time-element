@@ -14,7 +14,7 @@
     "web-components"
   ],
   "bugs": {
-    "url": "https://github.com/chemerisuk/better-emmet-plugin/issues"
+    "url": "https://github.com/chemerisuk/better-time-element/issues"
   },
   "config": {
     "gulp": "--gulpfile node_modules/better-dom-boilerplate/gulpfile.js --cwd ."
@@ -26,15 +26,14 @@
     "postversion": "git push && git push --tags",
     "publish": "gulp gh-pages $npm_package_config_gulp"
   },
+  "peerDependencies": {
+    "better-dom": "^4.0.0"
+  },
   "devDependencies": {
+    "better-dom": "^4.0.0",
     "better-dom-boilerplate": "git://github.com/chemerisuk/better-dom-boilerplate.git"
   },
   "karmaFiles": [
-    "bower_components/better-dom/dist/better-dom.js",
-    "bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"
-  ],
-  "peerDependencies": {
-    "better-dom": ">=2.0.0",
-    "better-i18n-plugin": "^2.0.0-rc.1"
-  }
+    "node_modules/better-dom/dist/better-dom.js"
+  ]
 }
