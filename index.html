@@ -4,24 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>better-time-element demo</title>
+    <style>
+    local-time {
+        font-weight: bold;
+    }
+
+    local-time:empty:before {
+        content: attr(datetime);
+    }
+
+    local-time:after {
+        display: block;
+        content: "<local-time datetime='" attr(datetime) "' data-format='" attr(data-format) "'></local-time>";
+        font-weight: normal;
+        font-size: smaller;
+        color: gray;
+    }
+    </style>
 </head>
 <body>
-    <p>Below different presentations of "2013-11-08T21:12:52.000Z"</p>
+    <p>Below different presentations of <code>"2013-11-08T21:12:52.000Z"</code></p>
     <article>
         <p>Formats datetime value in local format:</p>
-        <local-time datetime="2013-11-08T21:12:52.000Z">Wed Nov 9 2013 00:12:52 GMT+0300</local-time>
+        <local-time datetime="2013-11-08T21:12:52.000Z"></local-time>
     </article>
     <article>
         <p>You can omit time completely:</p>
-        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"month":"short","year":"numeric","day":"numeric"}'>Wed Nov 9 2013 00:12:52 GMT+0300</local-time>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"month":"short","year":"numeric","day":"numeric"}'></local-time>
     </article>
     <article>
         <p>Show the timezone:</p>
-        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"timeZoneName":"short"}'>Wed Nov 9 2013 00:12:52 GMT+0300</local-time>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"timeZoneName":"short"}'></local-time>
     </article>
     <article>
         <p>Force 24-hour time for any locale:</p>
-        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"hour12":false}'>Wed Nov 9 2013 00:12:52 GMT+0300</local-time>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"hour12":false}'></local-time>
+    </article>
+    <article>
+        <p>Force another locale via <code>lang</code> attribute:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" lang="ru"></local-time>
+    </article>
+    <article>
+        <p>Show "Invalid Date" for incorrect values:</p>
+        <local-time datetime="lol"></local-time>
     </article>
 
     <script src="node_modules/better-dom/dist/better-dom.js"></script>
