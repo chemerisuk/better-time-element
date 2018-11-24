@@ -100,15 +100,9 @@ describe("better-time-element", function() {
     //     expect(el.get("innerText")).toBe("12/02/2014");
     // });
 
-    // it("prints invalid and empty dates", function() {
-    //     var invalidDateString = new Date(NaN).toString();
+    it("prints invalid and empty dates", function() {
+        var invalidDateString = new Date(NaN).toString();
 
-    //     el.set("datetime", "bad date");
-    //     el._changeValue();
-    //     expect(el.get("innerText")).toBe(invalidDateString);
-
-    //     el.set("datetime", "");
-    //     el._changeValue();
-    //     expect(el.get("innerText")).toBe("");
-    // });
+        expect(el._formatDate(new Date("bad date"), "", "")).toBe(invalidDateString);
+    });
 });
