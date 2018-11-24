@@ -1,5 +1,5 @@
 const HTML = DOM.find("html");
-const DEFAULT_LANGUAGE = HTML.get("lang");
+const DEFAULT_LANGUAGE = HTML.get("lang") || "en";
 const globalFormatters = {};
 const DateTimeFormat = window.Intl.DateTimeFormat;
 
