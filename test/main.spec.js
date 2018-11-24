@@ -1,5 +1,5 @@
 describe("better-time-element", function() {
-    const DEFAULT_LANGUAGE = "en";
+    const DEFAULT_LANGUAGE = void 0;
 
     it("formats datetime to local by default", function() {
         const dateValue = new Date();
