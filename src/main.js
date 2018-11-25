@@ -1,18 +1,15 @@
 const HTML = DOM.find("html");
 const DEFAULT_LANGUAGE = HTML.get("lang") || void 0;
-const globalFormatters = {};
-const DateTimeFormat = window.Intl.DateTimeFormat;
-
-if (DateTimeFormat) {
-    DOM.findAll("meta[name^='data-format:']").forEach(meta => {
-        const key = meta.get("name").split(":").pop();
-        const formatOptions = meta.get("content");
-
+const globalFormatters = DOM.findAll("meta[name^='data-format:']").reduce((globalFormatters, meta) => {
+    const key = meta.get("name").split(":")[1];
+    const formatOptions = JSON.parse(meta.get("content"));
+    if (key) {
         try {
-            globalFormatters[key] = new DateTimeFormat(DEFAULT_LANGUAGE, JSON.parse(formatOptions));
+            globalFormatters[key] = new window.Intl.DateTimeFormat(DEFAULT_LANGUAGE, formatOptions);
         } catch(err) {}
-    });
-}
+    }
+    return globalFormatters;
+}, {});
 
 DOM.extend("local-time", {
     constructor() {
