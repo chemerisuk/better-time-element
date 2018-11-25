@@ -1,6 +1,6 @@
 /**
  * better-time-element: Useful <time> element extensions
- * @version 2.0.0-beta.1 Sat, 24 Nov 2018 10:52:02 GMT
+ * @version 2.0.0-beta.2 Sun, 25 Nov 2018 07:56:11 GMT
  * @link https://github.com/chemerisuk/better-time-element
  * @copyright 2018 Maksim Chemerisuk
  * @license MIT
@@ -11,21 +11,19 @@
   "use strict";
 
   var HTML = DOM.find("html");
-  var DEFAULT_LANGUAGE = HTML.get("lang");
-  var globalFormatters = {};
-  var DateTimeFormat = window.Intl.DateTimeFormat;
+  var DEFAULT_LANGUAGE = HTML.get("lang") || void 0;
+  var globalFormatters = DOM.findAll("meta[name^='data-format:']").reduce(function (globalFormatters, meta) {
+    var key = meta.get("name").split(":")[1];
+    var formatOptions = JSON.parse(meta.get("content"));
 
-  if (DateTimeFormat) {
-    DOM.findAll("meta[name^='data-format:']").forEach(function (meta) {
-      var key = meta.get("name").split(":").pop();
-      var formatOptions = meta.get("content");
-
+    if (key) {
       try {
-        globalFormatters[key] = new DateTimeFormat(DEFAULT_LANGUAGE, JSON.parse(formatOptions));
+        globalFormatters[key] = new window.Intl.DateTimeFormat(DEFAULT_LANGUAGE, formatOptions);
       } catch (err) {}
-    });
-  }
+    }
 
+    return globalFormatters;
+  }, {});
   DOM.extend("local-time", {
     constructor: function constructor() {
       var lang = this.get("lang") || DEFAULT_LANGUAGE;
