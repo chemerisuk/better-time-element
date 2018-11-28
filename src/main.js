@@ -1,7 +1,7 @@
 const HTML = DOM.find("html");
 const DEFAULT_LANGUAGE = HTML.get("lang") || void 0;
 const globalFormatters = DOM.findAll("meta[name^='data-format:']").reduce((globalFormatters, meta) => {
-    const key = meta.get("name").split(":")[1];
+    const key = meta.get("name").split(":")[1].trim();
     const formatOptions = JSON.parse(meta.get("content"));
     if (key) {
         try {
