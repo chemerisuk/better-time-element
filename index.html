@@ -3,25 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>better-prettydate demo</title>
-    <!--[if IE]>
-        <link href="bower_components/better-dom/dist/better-dom-legacy.htc" rel="htc"/>
-        <script src="bower_components/better-dom/dist/better-dom-legacy.js"></script>
-    <![endif]-->
+    <meta name="data-format:dateOnly" content='{"month":"short","year":"numeric","day":"numeric"}'>
+    <title>better-time-element demo</title>
+    <style>
+    local-time {
+        font-weight: bold;
+    }
+
+    local-time:empty:before {
+        content: attr(datetime);
+    }
+
+    local-time:after {
+        display: block;
+        content: "<local-time datetime='" attr(datetime) "' data-format='" attr(data-format) "'></local-time>";
+        font-weight: normal;
+        font-size: smaller;
+        color: gray;
+    }
+    </style>
 </head>
 <body>
     <article>
-        <time is="local-time" datetime="2013-11-14T21:12:52.000Z">Wed Nov 15 2013 00:12:52 GMT+0300</time>
-        <p>DOH! thanks for pointing that out</p>
+        <p>By default presents datetime in local format:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z"></local-time>
     </article>
     <article>
-        <time is="local-time" datetime="2013-11-08T21:12:52.000Z">Wed Nov 9 2013 00:12:52 GMT+0300</time>
-        <p>Strange, was debugging the error and updated to Firefox 27 and now the errors have been resolved.</p>
+        <p>With the attribute <code>data-format</code> you can customize presentation:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"month":"long","day":"numeric","hour":"numeric","minute":"numeric"}'></local-time>
+    </article>
+    <article>
+        <p>Or show the date part only:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"month":"short","year":"numeric","day":"numeric"}'></local-time>
+    </article>
+    <article>
+        <p>Or show the time part only:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"hour":"numeric","minute":"numeric","second":"numeric"}'></local-time>
+    </article>
+    <article>
+        <p>Add the timezone:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"timeZoneName":"short"}'></local-time>
+    </article>
+    <article>
+        <p>Force 24-hour time for any locale:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"hour12":false}'></local-time>
+    </article>
+    <article>
+        <p>Force different locale via the <code>lang</code> attribute:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" lang="ru"></local-time>
+    </article>
+    <article>
+        <p>Show "Invalid Date" for incorrect values:</p>
+        <local-time datetime="lol"></local-time>
+    </article>
+    <article>
+        <p>You can also define custom format globally:</p>
+        <local-time datetime="2013-11-08T21:12:52.000Z" data-format="dateOnly"></local-time>
     </article>
 
-    <script src="bower_components/better-dom/dist/better-dom.js"></script>
-    <script src="bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"></script>
+    <script src="node_modules/better-dom/dist/better-dom.js"></script>
     <script src="build/better-time-element.js"></script>
-    <script src="i18n/better-time-element.ru.js"></script>
 </body>
 </html>
