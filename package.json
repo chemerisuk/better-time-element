@@ -34,6 +34,7 @@
     "better-dom-boilerplate": "git://github.com/chemerisuk/better-dom-boilerplate.git"
   },
   "karmaFiles": [
+    "test/global-formatter.dom",
     "node_modules/better-dom/dist/better-dom.js"
   ]
 }

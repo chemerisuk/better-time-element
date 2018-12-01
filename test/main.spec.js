@@ -43,4 +43,13 @@ describe("better-time-element", function() {
 
         expect(el.value()).toBe(invalidDateString);
     });
+
+    it("supports global formats", function() {
+        const dateValue = new Date();
+        const formatOptions = {"hour":"numeric","minute":"numeric","second":"numeric"};
+        const el = DOM.mock(`<local-time datetime="${dateValue.toISOString()}" data-format="timeOnly">`);
+
+        expect(el.value()).toBe(dateValue.toLocaleString(DEFAULT_LANGUAGE, formatOptions));
+        expect(el.value()).not.toBe(dateValue.toLocaleString(DEFAULT_LANGUAGE));
+    });
 });
