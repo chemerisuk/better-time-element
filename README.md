@@ -1,80 +1,59 @@
-# better-time-element<br>[![NPM version][npm-version]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Bower version][bower-image]][bower-url]
+# better-time-element<br>[![NPM version][npm-version]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
 > Useful `<time>` element extensions using [better-dom](https://github.com/chemerisuk/better-dom)
 
 [LIVE DEMO](http://chemerisuk.github.io/better-time-element/)
 
 ## Features
-* represents time in localized format via `time[is=local-time]`
+* represents time in localized format via custom element `<local-time>`
 * [live extension](https://github.com/chemerisuk/better-dom/wiki/Live-extensions) - works for current and future content
-* [custom formats](#custom-formats) supported via `data-format`
-* [full i18n support](https://github.com/chemerisuk/better-i18n-plugin#multilingual-live-extensions) (if your language is missing - just translate strings in the `i18n/` folder and include the new file in your project)
+* [custom formats](https://github.com/chemerisuk/better-time-element#change-display-date-presentation) supported via `data-format`
 
 ## Installing
-Use [bower](http://bower.io/) to download this extension. Bower will take care of the required dependencies.
-
 ```sh
-$ bower install better-time-element
+$ npm install better-dateinput-polyfill better-dom
 ```
-
-This will clone the latest version of the __better-time-element__ into the `bower_components/` directory at the root of your project.
-
 Then append the following tags on your page:
 
 ```html
-<script src="bower_components/better-dom/dist/better-dom.js"></script>
-<script src="bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"></script>
-<script src="bower_components/better-time-element/dist/better-time-element.js"></script>
+<script src="node_modules/better-dom/dist/better-dom.js"></script>
+<script src="node_modules/better-time-element/dist/better-time-element.js"></script>
 ```
 
-## Custom formats
-The date format can be specified using a `data-format` attribute on the element. For example:
+## Change display date presentation
+Version 2 uses [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) methods to format presented date value according to the current page locale. You can customize it by specifying `data-format` attribute with [options for the Date#toLocaleString](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString) call as a stringified JSON object:
 
 ```html
-<time datetime="2016-01-23T11:12:58.089Z" is="local-time" data-format="EE, MMMM dd'th' yyyy"></time>
+<local-time datetime="2013-11-08T21:12:52.000Z" data-format='{"month":"short","year":"numeric","day":"numeric"}'></local-time>
 ```
 
-This will display the selected date as e.g. "Monday, December 8th 2014".
+When you set the same presentation format multiple times it makes sense to define a global format. Add extra `<meta>` element with appropriate values for `name` and `content` attributes into document `<head>`. Later in HTML you can just use a global format name as a value for `data-format`:
 
-If `data-format` is not specified, the default pattern is "E, dd MMM yyyy".
-
-Possible parameters for the format are:
-
-|Letter |Date Component                                   |Presentation |Examples         |
-|-------|-------------------------------------------------|-------------|-----------------|
-|y      |Year                                             |Year         |2002; 02; 2      |
-|M      |Month in year                                    |Month        |July; Jul; 07; 7 |
-|D      |Day in year                                      |Number       |09; 9           |
-|d      |Day in month                                     |Number       |08; 8            |
-|E      |Day name in week                                 |Text         |Tuesday; Tu.     |
-|u      |Day number of week (1 = Monday, ..., 7 = Sunday) |Number       |1                |
-|H      |Hour in day (0-23) |Number       |01;1                |
-|h      |Hour in am/pm (1-12) |Number       |01;1                |
-|m      |Minute in hour |Number       |01;1                |
-|s      |Second in minute |Number       |01;1                |
-|p      |Hour period in lower case |Text       |am/pm                |
-|P      |Hour period in upper case |Text       |AM/PM                |
-
-Number of letters in the parameter name specifies form of the output value, for instance:
-
-```
-"M" yields "1"
-"MM" yields "01"
-"MMM" yields "Jan"
-"MMMM" yields "January"
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    ...
+    <meta name="data-format:timeOnly" content='{"hour":"numeric","minute":"numeric","second":"numeric"}'>
+</head>
+<body>
+    ...
+    <local-time datetime="2013-11-08T21:12:52.000Z" data-format="timeOnly"></local-time>
+</body>
+</html>
 ```
 
 ## Browser support
 #### Desktop
 * Chrome
-* Safari 6.0+
-* Firefox 16+
-* Opera 12.10+
-* Internet Explorer 8+ (see [notes](https://github.com/chemerisuk/better-dom#notes-about-old-ies))
+* Safari
+* Firefox
+* Opera
+* Edge
+* Internet Explorer 10+
 
 #### Mobile
-* iOS Safari 6+
-* Android 2.3+
-* Chrome for Android
+* iOS Safari 7+
+* Chrome for Android 30+
 
 [npm-url]: https://www.npmjs.com/package/better-time-element
 [npm-version]: https://img.shields.io/npm/v/better-time-element.svg
@@ -85,7 +64,3 @@ Number of letters in the parameter name specifies form of the output value, for 
 
 [coveralls-url]: https://coveralls.io/r/chemerisuk/better-time-element
 [coveralls-image]: http://img.shields.io/coveralls/chemerisuk/better-time-element/master.svg
-
-[bower-url]: https://github.com/chemerisuk/better-time-element
-[bower-image]: http://img.shields.io/bower/v/better-time-element.svg
-
