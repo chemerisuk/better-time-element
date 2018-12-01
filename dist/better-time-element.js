@@ -1,6 +1,6 @@
 /**
  * better-time-element: Useful <time> element extensions
- * @version 2.0.0-beta.2 Sun, 25 Nov 2018 07:56:11 GMT
+ * @version 2.0.0 Sat, 01 Dec 2018 10:31:43 GMT
  * @link https://github.com/chemerisuk/better-time-element
  * @copyright 2018 Maksim Chemerisuk
  * @license MIT
@@ -13,7 +13,7 @@
   var HTML = DOM.find("html");
   var DEFAULT_LANGUAGE = HTML.get("lang") || void 0;
   var globalFormatters = DOM.findAll("meta[name^='data-format:']").reduce(function (globalFormatters, meta) {
-    var key = meta.get("name").split(":")[1];
+    var key = meta.get("name").split(":")[1].trim();
     var formatOptions = JSON.parse(meta.get("content"));
 
     if (key) {
