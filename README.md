@@ -10,7 +10,7 @@
 
 ## Installing
 ```sh
-$ npm install better-dateinput-polyfill better-dom
+$ npm install better-time-element better-dom
 ```
 Then append the following tags on your page:
 
