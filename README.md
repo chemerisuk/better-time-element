@@ -57,7 +57,7 @@ When you set the same presentation format multiple times it makes sense to defin
 
 [npm-url]: https://www.npmjs.com/package/better-time-element
 [npm-version]: https://img.shields.io/npm/v/better-time-element.svg
-[npm-downloads]: https://img.shields.io/npm/dt/better-time-element.svg
+[npm-downloads]: https://img.shields.io/npm/dm/better-time-element.svg
 
 [travis-url]: http://travis-ci.org/chemerisuk/better-time-element
 [travis-image]: http://img.shields.io/travis/chemerisuk/better-time-element/master.svg
