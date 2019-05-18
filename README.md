@@ -1,4 +1,4 @@
-# better-time-element<br>[![NPM version][npm-version]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+# better-time-element<br>[![NPM version][npm-version]][npm-url] [![NPM downloads][npm-downloads]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Twitter][twitter-follow]][twitter-url]
 > Useful `<time>` element extensions using [better-dom](https://github.com/chemerisuk/better-dom)
 
 [LIVE DEMO](http://chemerisuk.github.io/better-time-element/)
@@ -64,3 +64,6 @@ When you set the same presentation format multiple times it makes sense to defin
 
 [coveralls-url]: https://coveralls.io/r/chemerisuk/better-time-element
 [coveralls-image]: http://img.shields.io/coveralls/chemerisuk/better-time-element/master.svg
+
+[twitter-url]: https://twitter.com/chemerisuk
+[twitter-follow]: https://img.shields.io/twitter/follow/chemerisuk.svg?style=social&label=Follow%20me
